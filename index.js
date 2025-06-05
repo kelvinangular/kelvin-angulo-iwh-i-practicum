@@ -29,6 +29,22 @@ app.get('/', async (req, res) => {
 
     }
 
+    // Try Catch Block
+     try {
+        const resp = await axios.get(certifications, { headers });
+        const data = resp.data.results;
+
+        // res.json(data); Test API response - Certifications JSON Payload
+
+         // render homepage route
+        res.render('homepage', {title: 'Certifications | Hubspot APIs', data});
+
+     } catch (error) {
+        // Console Error
+        console.error(error);
+
+     }
+
     
 
 });
