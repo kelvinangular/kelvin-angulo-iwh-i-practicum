@@ -15,7 +15,23 @@ dotenv.config({path: '.env'});
 const PRIVATE_APP_ACCESS = process.env.HUBSPOT_ACCESS_TOKEN;
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
+app.get('/', async (req, res) => {
 
+    // End point URL
+    // const certifications = 'https://api.hubspot.com/crm/v3/objects/certifications';
+    const certifications = 'https://api.hubspot.com/crm/v3/objects/certifications/?properties=name&properties=school&properties=year_completed';
+
+    // Headers / Authorization
+    const headers = {
+
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'content-type': 'application/json'
+
+    }
+
+    
+
+});
 // * Code for Route 1 goes here
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
