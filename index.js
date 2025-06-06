@@ -51,7 +51,15 @@ app.get('/', async (req, res) => {
 // * Code for Route 1 goes here
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
-
+app.get('/update', (req, res) => {
+  try {
+    res.render('update', { pageTitle: 'Update Custom Object Form | Integrating With HubSpot I Practicum' }); // Render the updates.pug template
+  } 
+  
+  catch (error) {
+    console.error(error);
+  }
+});
 // * Code for Route 2 goes here
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
