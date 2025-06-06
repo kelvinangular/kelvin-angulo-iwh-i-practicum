@@ -45,8 +45,6 @@ app.get('/', async (req, res) => {
 
      }
 
-    
-
 });
 // * Code for Route 1 goes here
 
@@ -62,8 +60,31 @@ app.get('/update', (req, res) => {
 });
 // * Code for Route 2 goes here
 
-// TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
+// TODO: ROUTE 3 - Create a new app.POST route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
+app.post('/update', async (req, res) => {
+  const certificationEndpoint = 'https://api.hubspot.com/crm/v3/objects/certifications';
+  
+  const headers = {
+    Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+    'content-type': 'application/json'
+  }
 
+  const data = {
+    properties: {
+      "name": req.body.name,
+      "school": req.body.school,
+      "year_completed": req.body.year_completed
+    }
+  }
+
+  try {
+    const response = await axios.post(certificationEndpoint, data, { headers });
+    console.log('API Response:', JSON.stringify(response.data, null, 2));
+    res.redirect('/'); 
+  } catch (error) {
+    console.error(error);
+  }
+});
 // * Code for Route 3 goes here
 
 /** 
